@@ -20,14 +20,10 @@ class UserInput extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.fetchTicks(this.state.email).then(
-    //   this.setState({ email: ''})
-    // );
-    var key = "108453776-6b2fff6c580d3978b909f4ccaa856cb3";
-    var url =
-      'https://www.mountainproject.com/data?action=getTicks&userId=' +
-      this.state.email + '&key=' + key;
 
+    this.props.fetchTicks(this.state.email).then(response => {
+      this.setState({email: ''});
+    });
   }
 
 

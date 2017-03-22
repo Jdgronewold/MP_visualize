@@ -30,17 +30,17 @@ export const ticksLoaded = () => ({
 export const fetchTicks = (email) => (dispatch) => {
   dispatch(startLoadingTicks());
   return MPUtils.getTicks(email)
-    .then(allTicks => {
+  .then(allTicks => {
     dispatch(receiveTicks(allTicks));
     return allTicks.ticks;
-    })
-    .then(ticks => {
-      var ids = [];
-      ticks.each(tick => {
-        ids.push(tick.routeId);
-      });
-      dispatch(fetchRoutes(ids));
+  })
+  .then(ticks => {
+    var ids = [];
+    ticks.forEach(tick => {
+      ids.push(tick.routeId);
     });
+    dispatch(fetchRoutes(ids));
+  });
 };
 
 export const fetchRoutes = (routes) => dispatch => {

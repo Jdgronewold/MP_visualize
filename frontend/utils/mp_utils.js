@@ -21,28 +21,22 @@ var key = "108453776-6b2fff6c580d3978b909f4ccaa856cb3";
 // };
 
 export const getRoutes = (routes) => {
-  var url = 'https://www.mountainproject.com/data?action=getRoutes&routeIds=' +
-  routes.join + '&key=' + key;
-  console.log(url);
   return (
-    $.post('/php_read.php', { url: url}, (data) => {
-      console.log(data);
-      return data;
+    $.ajax({
+      method: 'GET',
+      url: 'api/mp/routes',
+      data: { routes }
     })
   );
 };
 
 export const getTicks = (email) => {
-  var url =
-    'https://www.mountainproject.com/data?action=getTicks&userId=' +
-    email + '&key=' + key;
-    console.log(url);
-    debugger
+  var query = email;
   return (
-    $.post('/php_read.php', { url: url}, (data) => {
-      console.log(data);
-      debugger;
-      return data;
+    $.ajax({
+      method: 'GET',
+      url: 'api/mp/ticks',
+      data: { query }
     })
   );
 };
