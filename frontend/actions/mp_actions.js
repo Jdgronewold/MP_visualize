@@ -27,6 +27,7 @@ export const ticksLoaded = () => ({
 });
 
 //ASYNC
+//startLoadingTicks is for the waiting process
 export const fetchTicks = (email) => (dispatch) => {
   dispatch(startLoadingTicks());
   return MPUtils.getTicks(email)

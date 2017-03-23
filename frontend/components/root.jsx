@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { bindAll, merge } from 'lodash';
 
-import Header from './header';
+import App from './app';
 
 const Root = ({store}) => {
     return (
       <Provider store={store} >
-        <Header />
+        <App />
       </Provider>
     );
 };
