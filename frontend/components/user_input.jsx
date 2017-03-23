@@ -7,7 +7,8 @@ class UserInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: ''
+      input: '',
+      inputType: 'email'
     };
 
     this.update = this.update.bind(this);
@@ -21,8 +22,8 @@ class UserInput extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.fetchTicks(this.state.email).then(response => {
-      this.setState({email: ''});
+    this.props.fetchTicks(this.state.input, this.state.inputType).then(response => {
+      this.setState({input: ''});
     });
   }
 
@@ -32,9 +33,27 @@ class UserInput extends React.Component {
       <div className="search-component">
         <input
           type="text"
-          placeholder="Enter MP Email"
-          onChange={this.update('email')}
+          placeholder="Enter MP Email or userId"
+          onChange={this.update('input')}
         />
+      <label>
+        <input
+          type="radio"
+          value="email"
+          checked={this.state.inputType === "email"}
+          onChange={this.update('inputType')}
+          />
+        Email
+      </label>
+      <label>
+        <input
+          type="radio"
+          value="userId"
+          checked={this.state.inputType === "userId"}
+          onChange={this.update('inputType')}
+          />
+        userId
+      </label>
       <button onClick={this.handleSubmit} >Submit</button>
       </div>
     );

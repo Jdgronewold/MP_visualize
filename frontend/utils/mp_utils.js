@@ -30,13 +30,12 @@ export const getRoutes = (routes) => {
   );
 };
 
-export const getTicks = (email) => {
-  var query = email;
+export const getTicks = (input, type) => {
   return (
     $.ajax({
       method: 'GET',
       url: 'api/mp/ticks',
-      data: { query }
+      data: { input, type }
     })
   );
 };

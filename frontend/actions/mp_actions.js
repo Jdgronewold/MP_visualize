@@ -28,14 +28,15 @@ export const ticksLoaded = () => ({
 
 //ASYNC
 //startLoadingTicks is for the waiting process
-export const fetchTicks = (email) => (dispatch) => {
+export const fetchTicks = (input, type) => (dispatch) => {
   dispatch(startLoadingTicks());
-  return MPUtils.getTicks(email)
+  return MPUtils.getTicks(input, type)
   .then(allTicks => {
     dispatch(receiveTicks(allTicks));
     return allTicks.ticks;
   })
   .then(ticks => {
+    dispatch(ticksLoaded);
     var ids = [];
     ticks.forEach(tick => {
       ids.push(tick.routeId);
@@ -45,7 +46,6 @@ export const fetchTicks = (email) => (dispatch) => {
 };
 
 export const fetchRoutes = (routes) => dispatch => {
-  dispatch(ticksLoaded);
   return MPUtils.getRoutes(routes)
   .then(routes => dispatch(receiveRoutes(routes)));
 };

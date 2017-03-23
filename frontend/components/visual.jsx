@@ -10,12 +10,18 @@ class Visual extends React.Component {
     const routes = this.props.routes.routes.map( (route, idx) => (
       <li key={idx}> { route.name } </li>
     ));
-    console.log(routes);
-    return (
-      <ul>
-        {routes}
-      </ul>
-    );
+    console.log(this.props);
+    if (this.props.loading.routesLoading || this.props.loading.ticksLoading) {
+      return (
+        <div> Fetching data...</div>
+      );
+    } else {
+      return (
+        <ul>
+          {routes}
+        </ul>
+      );
+    }
   }
 }
 

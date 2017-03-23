@@ -3,12 +3,14 @@ require 'json'
 
 class Api::MpController < ApplicationController
   def ticks
-    if params[:query].present?
+    debugger
+    if params[:input].present?
       key = "108453776-6b2fff6c580d3978b909f4ccaa856cb3"
-      url = 'https://www.mountainproject.com/data?action=getTicks&email=' +
-      params[:query] + '&key=' + key
+      url = 'https://www.mountainproject.com/data?action=getTicks&' +
+        params[:type] + '=' + params[:input] + '&key=' + key
       @body = JSON.parse(Faraday.get(url).body)
     end
+    debugger
     render :ticks
   end
 
