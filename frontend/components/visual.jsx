@@ -7,8 +7,9 @@ class Visual extends React.Component {
   }
 
   render() {
-    const routes = this.props.routes.routes.map( (route, idx) => (
-      <li key={idx}> { route.name } </li>
+    debugger
+    const routes = this.props.ticks.map( (tick, idx) => (
+      <li key={idx}> { tick.name } </li>
     ));
     console.log(this.props);
     if (this.props.loading.routesLoading || this.props.loading.ticksLoading) {

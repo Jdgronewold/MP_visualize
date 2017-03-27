@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 import Visual from './visual';
 
-const mapStateToProps = ({routes, ticks, loading}) => {
+const mapStateToProps = ({ ticks, loading}) => {
   return (
     {
       ticks: ticks,
-      routes: routes,
       loading: loading
     }
   );

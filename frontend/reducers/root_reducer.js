@@ -5,6 +5,5 @@ import RoutesReducer from './routes_reducer';
 
 export default combineReducers({
   loading: LoadingReducer,
-  ticks: TicksReducer,
-  routes: RoutesReducer
+  ticks: TicksReducer
 });

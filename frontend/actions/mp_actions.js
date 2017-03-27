@@ -34,14 +34,6 @@ export const fetchTicks = (input, type) => (dispatch) => {
   .then(allTicks => {
     dispatch(receiveTicks(allTicks));
     return allTicks.ticks;
-  })
-  .then(ticks => {
-    dispatch(ticksLoaded);
-    var ids = [];
-    ticks.forEach(tick => {
-      ids.push(tick.routeId);
-    });
-    dispatch(fetchRoutes(ids));
   });
 };
 
