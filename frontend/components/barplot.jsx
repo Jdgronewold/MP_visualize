@@ -16,12 +16,32 @@ import * as d3 from 'd3';
 class BarPlot extends React.Component {
   constructor(props) {
     super(props);
+    this.sortResults = this.sortResults.bind(this);
+  }
+
+  sortResults(results) {
+    const sorted = results.sort((a,b) => {
+      let gradeA, gradeB;
+      if (a.key === "Other") {
+        gradeA = "1";
+        gradeB = b.key.match(/(5.)(\d*)/);
+      } else if (b.key === "Other") {
+        gradeB = "1";
+        gradeA = a.key.match(/(5.)(\d*)/);
+      } else {
+        gradeA = a.key.match(/(5.)(\d*)/);
+        gradeB = b.key.match(/(5.)(\d*)/);
+      }
+      return d3.ascending(gradeA[2], gradeB[2]);
+    });
+    return sorted;
   }
 
   render() {
     let rects;
     let texts;
     if (typeof this.props.gradesSum !== 'undefined') {
+      const sortedGrades = this.sortResults(this.props.gradesSum);
       const xScale = d3.scaleBand()
       .domain(d3.range(this.props.gradesSum.length))
       .rangeRound([0, this.props.width])
@@ -49,11 +69,11 @@ class BarPlot extends React.Component {
             y={`${this.props.height - yScale(grade.values.length) + 20}`}
             textAnchor="middle"
             key={idx}
+            fill="blue"
           >{grade.key}</text>
         );
       });
     }
-    debugger
     return (
       <svg width={this.props.width} height={this.props.height}>
         {rects}
