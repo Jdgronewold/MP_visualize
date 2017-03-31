@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def format_rating(rating)
     grade_split = rating.split(" ")
-    grade_match = /(5.\d*)(.)(.*)/
+    grade_match = /(5\.\d*)(.)(.*)/
     grade = grade_match.match(grade_split[0])
     return ["Other", rating] if grade.nil?
     case grade[2]

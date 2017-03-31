@@ -21,7 +21,6 @@ class BarPlot extends React.Component {
 
   sortResults(results) {
     const sorted = results.sort((a,b) => {
-      console.log([a,b]);
       let gradeA = a.key.match(/(5.)(\d+)([a-d]*)/);
       let gradeB = b.key.match(/(5.)(\d+)([a-d]*)/);
 
@@ -33,7 +32,6 @@ class BarPlot extends React.Component {
       } else if (gradeB === null ){
         gradeB = ["Other", "Other", "1", "b"];
       }
-      console.log([gradeA, gradeB]);
       return d3.ascending(parseInt(gradeA[2]), parseInt(gradeB[2])) ||
         d3.ascending(gradeA[3], gradeB[3]);
     });
@@ -52,7 +50,7 @@ class BarPlot extends React.Component {
 
       const yScale = d3.scaleLinear()
       .domain([0, d3.max(this.props.gradesSum, (d) => d.values.length )])
-      .range([0, this.props.height]);
+      .range([0, this.props.height - this.props.padding]);
 
       rects = this.props.gradesSum.map( (grade, idx) => {
         return (
@@ -66,13 +64,26 @@ class BarPlot extends React.Component {
         );
       });
       texts = this.props.gradesSum.map( (grade, idx) => {
+
+        let x = `${xScale(idx) + xScale.bandwidth()/2 - 5}`;
+        let y = parseInt(`${this.props.height - yScale(grade.values.length)}`);
+        let textColor = "white";
+        if (y > 350) { // 350 is about where text goes under x axis
+          y -= 25;
+          textColor = "black";
+        } else {
+          y += 25;
+        }
         return (
           <text
-            x={`${xScale(idx) + xScale.bandwidth()/2}`}
-            y={`${this.props.height - yScale(grade.values.length) + 15}`}
+            x={x}
+            y={y}
             textAnchor="middle"
             key={idx}
-            fill="blue"
+            fill={textColor}
+            transform={`rotate(90
+              ${x}
+              ${y})`}
           >{grade.key}</text>
         );
       });
