@@ -21,18 +21,21 @@ class BarPlot extends React.Component {
 
   sortResults(results) {
     const sorted = results.sort((a,b) => {
-      let gradeA, gradeB;
-      if (a.key === "Other") {
-        gradeA = "1";
-        gradeB = b.key.match(/(5.)(\d*)/);
-      } else if (b.key === "Other") {
-        gradeB = "1";
-        gradeA = a.key.match(/(5.)(\d*)/);
-      } else {
-        gradeA = a.key.match(/(5.)(\d*)/);
-        gradeB = b.key.match(/(5.)(\d*)/);
+      console.log([a,b]);
+      let gradeA = a.key.match(/(5.)(\d+)([a-d]*)/);
+      let gradeB = b.key.match(/(5.)(\d+)([a-d]*)/);
+
+      if (gradeA === null && gradeB === null ) {
+        gradeA = ["Other", "Other", "1", "a"];
+        gradeB = ["Other", "Other", "1", "b"];
+      } else if (gradeA === null) {
+        gradeA = ["Other", "Other", "1", "a"];
+      } else if (gradeB === null ){
+        gradeB = ["Other", "Other", "1", "b"];
       }
-      return d3.ascending(gradeA[2], gradeB[2]);
+      console.log([gradeA, gradeB]);
+      return d3.ascending(parseInt(gradeA[2]), parseInt(gradeB[2])) ||
+        d3.ascending(gradeA[3], gradeB[3]);
     });
     return sorted;
   }
@@ -66,7 +69,7 @@ class BarPlot extends React.Component {
         return (
           <text
             x={`${xScale(idx) + xScale.bandwidth()/2}`}
-            y={`${this.props.height - yScale(grade.values.length) + 20}`}
+            y={`${this.props.height - yScale(grade.values.length) + 15}`}
             textAnchor="middle"
             key={idx}
             fill="blue"

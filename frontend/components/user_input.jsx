@@ -7,7 +7,7 @@ class UserInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: '',
+      input: '106049062',
       inputType: 'email'
     };
 
@@ -33,7 +33,7 @@ class UserInput extends React.Component {
       <div className="search-component">
         <input
           type="text"
-          placeholder="Enter MP Email or userId"
+          placeholder="Enter MP info here"
           onChange={this.update('input')}
         />
       <label>
