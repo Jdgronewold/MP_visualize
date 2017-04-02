@@ -34,6 +34,9 @@ export const fetchTicks = (input, type) => (dispatch) => {
   .then(allTicks => {
     dispatch(receiveTicks(allTicks));
     return allTicks.ticks;
+  }, error => {
+    debugger;
+    // need to dispatch an action that resets shit
   });
 };
 

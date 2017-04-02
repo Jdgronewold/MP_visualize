@@ -36,9 +36,7 @@ class Visual extends React.Component {
       );
     } else {
       return (
-        <div>
           <BarPlot gradesSum={gradesSum} {...styles} />
-        </div>
       );
     }
   }
