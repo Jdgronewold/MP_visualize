@@ -3,6 +3,7 @@ import ReactFauxDOM from 'react-faux-dom';
 import * as d3 from 'd3';
 
 import RoutesList from './routes_list';
+import PieChart from './pie_chart';
 
 class BarPlot extends React.Component {
   constructor(props) {
@@ -138,6 +139,7 @@ class BarPlot extends React.Component {
         <div className="visuals">
           { svgReact }
           <RoutesList data={this.state.routes} />
+          <PieChart data={this.state.routes} />
         </div>
       );
 
