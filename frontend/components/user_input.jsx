@@ -7,12 +7,13 @@ class UserInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: '106049062',
+      input: '',
       inputType: 'email'
     };
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   update(property) {
@@ -27,12 +28,21 @@ class UserInput extends React.Component {
     });
   }
 
+  handleDemo(e) {
+    e.preventDefault();
+
+    this.props.fetchTicks('106049062', 'userId').then(response => {
+      this.setState({input: ''});
+    });
+  }
+
 
   render() {
     return (
       <div className="search-component">
         <input
           type="text"
+          value={this.state.input}
           placeholder="Enter MP info here"
           onChange={this.update('input')}
         />
@@ -55,6 +65,7 @@ class UserInput extends React.Component {
         userId
       </label>
       <button onClick={this.handleSubmit} >Submit</button>
+      <button onClick={this.handleDemo}> Demo</button>
       </div>
     );
   }

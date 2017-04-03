@@ -1,12 +1,12 @@
 import React from 'react';
 import * as d3 from 'd3';
 
-import BarPlot from './barplot';
+import BarPlot from './barplot_faux';
 
 const styles = {
   width: 500,
   height: 400,
-  padding: 30
+  padding: 40
 };
 
 class Visual extends React.Component {
