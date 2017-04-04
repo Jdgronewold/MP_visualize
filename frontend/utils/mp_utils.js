@@ -11,7 +11,6 @@ var key = "108453776-6b2fff6c580d3978b909f4ccaa856cb3";
 //   var url =
 //     'https://www.mountainproject.com/data?action=getTicks&userId=' +
 //     email + '&key=' + key;
-//     console.log(url);
 //     return (
 //       $.ajax({
 //         type: 'GET',

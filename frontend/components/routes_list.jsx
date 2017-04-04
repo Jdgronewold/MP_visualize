@@ -10,7 +10,7 @@ const createRouteClass = (type) => {
     return types.join(", ");
   } else if(type === "Trad, Aid") {
     return "TradAid";
-  } else if(type === "Trad, Sport") {
+  } else if(type === "Trad, Sport" || type === "Trad, Sport, Aid") {
     return "Other";
   } else {
     return type;
@@ -21,7 +21,11 @@ export default (props) => {
   const routes = props.data.map( (route, idx) => {
     let type = createRouteClass(route.type);
     return (
-      <li key={`list_${idx}`} className={`li-${type}`}>
+      <li
+        key={`list_${idx}`}
+        className={`li-${type}`}
+        data={route}
+        onClick={e => props.updateFromChild('routeDetail', route)}>
         {route.name}
       </li>
     );

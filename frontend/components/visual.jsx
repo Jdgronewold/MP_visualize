@@ -28,7 +28,6 @@ class Visual extends React.Component {
     let gradesSum;
     if (this.props.ticks.length > 0 ) {
       gradesSum = this.tableize(this.props.ticks);
-      console.log(gradesSum);
     }
     if (this.props.loading.routesLoading || this.props.loading.ticksLoading) {
       return (

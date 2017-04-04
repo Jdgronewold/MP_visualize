@@ -2,19 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.search-component input, button {
+  margin-left: 20px;
+}
+
 .visuals {
+  margin-top: 20px;
+}
+.visuals-main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
+ul {
+  list-style: none
+}
+
 .routes-list {
   height: 390px;
   flex: 1;
-  list-style: none;
   font-weight: bold;
   overflow: scroll;
+  font-size: 20px;
 }
 
 .routes-list li:hover {
@@ -37,6 +48,22 @@
   align-items: center;
 }
 
+.route-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.route-image {
+  margin: 20px;
+}
+
+.route-detail li {
+  font-size: 20px;
+  margin: 10px;
+  margin-left: 0;
+}
+
 .legend td{
     padding:4px 5px;
     vertical-align:bottom;
@@ -44,7 +71,6 @@
 
 
 // li colors
-
 .li-Trad {
   color: #3366cc;
 }

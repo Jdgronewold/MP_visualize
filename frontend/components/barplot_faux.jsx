@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 
 import RoutesList from './routes_list';
 import PieChart from './pie_chart';
+import RouteDetail from './route_detail';
 
 class BarPlot extends React.Component {
   constructor(props) {
@@ -15,8 +16,16 @@ class BarPlot extends React.Component {
     this.addLabels = this.addLabels.bind(this);
     this.calculateY = this.calculateY.bind(this);
     this.addAxis = this.addAxis.bind(this);
-    this.state = { routes: [] };
+    this.updateFromChild = this.updateFromChild.bind(this);
+    this.routeDetail = this.routeDetail.bind(this);
+
+    this.state = { routes: [], routeDetail: {} };
   }
+
+  updateFromChild(key, value) {
+    this.setState({[key]: value});
+  }
+
 
   sortResults(results) {
     const sorted = results.sort((a,b) => {
@@ -38,7 +47,7 @@ class BarPlot extends React.Component {
   }
 
   showData(data) {
-    this.setState({routes: data});
+    this.setState({routes: data, routeDetail: {}});
   }
 
   createScales() {
@@ -71,7 +80,13 @@ class BarPlot extends React.Component {
            yScale(d.values.length));
       })
       .attr('d', d => d.values)
-      .on("click", (d) => this.showData(d.values));
+      .on("click", (d) => this.showData(d.values))
+      .on("mouseover", function() {
+        d3.select(this)
+          .transition()             // <-- New!
+          .duration(1000)           // <-- New!
+          .attr("fill", "white");
+      });
   }
 
   addLabels(svg, data, xScale, yScale) {
@@ -117,6 +132,14 @@ class BarPlot extends React.Component {
     return y;
   }
 
+  routeDetail() {
+    if (Object.keys(this.state.routeDetail).length === 0 ) {
+      return <div></div>;
+    } else {
+      return <RouteDetail data={this.state.routeDetail} />;
+    }
+  }
+
   render() {
 
     if (typeof this.props.gradesSum !== 'undefined') {
@@ -130,17 +153,31 @@ class BarPlot extends React.Component {
         .attr('width', this.props.width)
         .attr('height', this.props.height);
 
+
       this.addRects(svg, sortedGrades, xScale, yScale);
       this.addLabels(svg, sortedGrades, xScale, yScale);
       this.addAxis(svg, yScale);
+      
+      svg.append('text')
+      .attr('x', `${this.props.padding / 2}`)
+      .attr('y', '20')
+      .text('Click on a grade/route name to see more!');
 
       let svgReact =  node.toReact();
 
       return (
         <div className="visuals">
-          { svgReact }
-          <RoutesList data={this.state.routes} />
-          <PieChart data={this.state.routes} />
+          <div className="visuals-main">
+            { svgReact }
+            <RoutesList
+              data={this.state.routes}
+              updateFromChild={this.updateFromChild}
+            />
+            <PieChart data={this.state.routes} />
+          </div>
+          <div className="visuals-detail">
+            {this.routeDetail()}
+          </div>
         </div>
       );
 

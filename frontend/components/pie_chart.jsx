@@ -37,7 +37,6 @@ class PieChart extends React.Component {
         }
       })
       .entries(data);
-    console.log(climbType);
 
     return climbType;
   }
