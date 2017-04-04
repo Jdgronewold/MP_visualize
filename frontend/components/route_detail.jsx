@@ -7,14 +7,24 @@ class RouteDetail extends React.Component {
   }
 
   render() {
+    let grade;
+    let gear = this.props.data.gear || "";
+
+    if (this.props.data.grade === "Other") {
+      grade = this.props.data.gear;
+      gear = "";
+    } else {
+      grade = this.props.data.grade;
+    }
+
     return (
       <div className={'route-detail'}>
         <img
           src={this.props.data.imgMed}
           alt={'mp_img'}
           className="route-image"
-          height='200px'
-          width='200px'
+          height='250px'
+          width='auto'
         />
         <ul>
           <li key="Name">
@@ -24,7 +34,10 @@ class RouteDetail extends React.Component {
             >{this.props.data.name}</a>
           </li>
           <li key="type"> <b>Type: </b> {this.props.data.type}</li>
-          <li key="grade"> <b>Grade: </b> {this.props.data.grade}</li>
+          <li key="grade">
+            <b>Grade: </b>
+            {grade + " " + gear}
+          </li>
           <li key="pitches"> <b>Pitches: </b> {this.props.data.pitches}</li>
           <li key="location"> <b>Location: </b> {this.props.data.location.join(" > ")}</li>
           <li key="date"> <b>Date Climbed: </b> {this.props.data.date}</li>
