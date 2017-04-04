@@ -6,4 +6,69 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.routes-list {
+  height: 390px;
+  flex: 1;
+  list-style: none;
+  font-weight: bold;
+  overflow: scroll;
+}
+
+.routes-list li:hover {
+  text-decoration: underline;
+}
+
+.routes-grades {
+  height: 390px;
+  flex: 2;
+}
+
+.routes-types {
+  flex: 2;
+}
+
+.route-types {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend td{
+    padding:4px 5px;
+    vertical-align:bottom;
+}
+
+
+// li colors
+
+.li-Trad {
+  color: #3366cc;
+}
+
+.li-Sport {
+  color: #dc3912;
+}
+
+.li-Alpine {
+  color: #ff9900;
+}
+
+.li-Ice {
+  color: #0099c6;
+}
+
+.li-Mixed {
+  color: #990099;
+}
+
+.li-TradAid {
+  color: #ffd700;
+}
+
+.li-Other {
+  color: #00ff7f;
 }

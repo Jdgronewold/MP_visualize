@@ -49,7 +49,7 @@ class BarPlot extends React.Component {
 
     const yScale = d3.scaleLinear()
       .domain([0, d3.max(this.props.gradesSum, (d) => d.values.length )])
-      .range([this.props.height - this.props.padding, this.props.padding]);
+      .range([this.props.height - 15, this.props.padding]);
 
       return {xScale: xScale, yScale: yScale};
   }
@@ -67,7 +67,7 @@ class BarPlot extends React.Component {
       })
       .attr('width', d => xScale.bandwidth())
       .attr('height', d => {
-         return ((this.props.height - this.props.padding) -
+         return ((this.props.height - 14) -
            yScale(d.values.length));
       })
       .attr('d', d => d.values)
@@ -126,6 +126,7 @@ class BarPlot extends React.Component {
 
       let node = ReactFauxDOM.createElement('svg');
       var svg = d3.select(node)
+        .attr("class", 'routes-grades')
         .attr('width', this.props.width)
         .attr('height', this.props.height);
 
