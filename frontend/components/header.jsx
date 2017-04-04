@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindAll } from 'lodash';
 
 import UserInputContainer from './user_input_container';
 

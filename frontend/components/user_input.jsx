@@ -1,7 +1,4 @@
 import React from 'react';
-import { bindAll } from 'lodash';
-
-import cheerio from 'cheerio';
 
 class UserInput extends React.Component {
   constructor(props) {
