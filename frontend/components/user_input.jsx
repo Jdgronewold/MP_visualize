@@ -11,6 +11,7 @@ class UserInput extends React.Component {
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
+
   }
 
   update(property) {
@@ -63,7 +64,7 @@ class UserInput extends React.Component {
       </label>
       <i className="fa fa-question-circle-o" aria-hidden="true">
         <span className="tooltip">
-          A MP userId is found at the end of the url on a users page 
+          An MP userId is found at the end of the url on a users page
          </span>
       </i>
       <button onClick={this.handleSubmit} >Submit</button>
