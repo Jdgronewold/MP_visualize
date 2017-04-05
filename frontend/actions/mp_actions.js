@@ -5,6 +5,7 @@ export const RECEIVE_ROUTES = 'RECEIVE_ROUTES';
 export const START_LOADING_TICKS = 'START_LOADING_TICKS';
 export const START_LOADING_ROUTES = 'START_LOADING_ROUTES';
 export const TICKS_LOADED = 'TICKS_LOADED';
+export const RESET_ERROR = 'RESET_ERROR';
 
 
 //SYNC
@@ -26,6 +27,10 @@ export const ticksLoaded = () => ({
   type: TICKS_LOADED
 });
 
+export const resetError = () => ({
+  type: RESET_ERROR
+});
+
 //ASYNC
 //startLoadingTicks is for the waiting process
 export const fetchTicks = (input, type) => (dispatch) => {
@@ -35,8 +40,8 @@ export const fetchTicks = (input, type) => (dispatch) => {
     dispatch(receiveTicks(allTicks));
     return allTicks.ticks;
   }, error => {
-    debugger;
-    // need to dispatch an action that resets shit
+    alert('The provided email or userId did not match any MP accounts');
+    dispatch(resetError());
   });
 };
 

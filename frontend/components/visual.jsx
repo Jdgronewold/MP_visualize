@@ -29,9 +29,16 @@ class Visual extends React.Component {
     if (this.props.ticks.length > 0 ) {
       gradesSum = this.tableize(this.props.ticks);
     }
+    debugger
     if (this.props.loading.routesLoading || this.props.loading.ticksLoading) {
       return (
         <div> Fetching data...</div>
+      );
+    } else if (this.props.loading.userSearched && this.props.ticks.length === 0) {
+      return (
+        <div className="encouragement">
+          You don't have any ticks - go climb something!
+        </div>
       );
     } else {
       return (
