@@ -61,6 +61,11 @@ class UserInput extends React.Component {
           />
         userId
       </label>
+      <i className="fa fa-question-circle-o" aria-hidden="true">
+        <span className="tooltip">
+          A MP userId is found at the end of the url on a users page 
+         </span>
+      </i>
       <button onClick={this.handleSubmit} >Submit</button>
       <button onClick={this.handleDemo}> Demo</button>
       </div>
