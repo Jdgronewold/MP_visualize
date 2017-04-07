@@ -69,6 +69,11 @@ class UserInput extends React.Component {
       </i>
       <button onClick={this.handleSubmit} >Submit</button>
       <button onClick={this.handleDemo}> Demo</button>
+        <i className="fa fa-question-circle-o" aria-hidden="true">
+          <span className="tooltip">
+            Demo info comes from Max Tepfer's ticks!
+           </span>
+        </i>
       </div>
     );
   }
