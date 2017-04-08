@@ -80,6 +80,7 @@ class BarPlot extends React.Component {
            yScale(d.values.length));
       })
       .attr('d', d => d.values)
+      .attr('fill', '#3a9fbf')
       .on("click", (d) => this.showData(d.values))
       .on("mouseover", function() {
         d3.select(this)
@@ -104,7 +105,7 @@ class BarPlot extends React.Component {
     .attr('text-anchor', 'middle')
     .attr('fill', d => {
       let y = parseInt(`${yScale(d.values.length)}`);
-      return y > 310 ? "black" : "white";
+      return y > 310 ? '#3a9fbf' : "white";
     })
     .attr('pointer-events', 'none')
     .text(d => d.key)
