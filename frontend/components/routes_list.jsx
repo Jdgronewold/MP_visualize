@@ -18,6 +18,8 @@ const createRouteClass = (type) => {
 };
 
 export default (props) => {
+  if (!props.data.length) return <div></div>;
+    
   const routes = props.data.map( (route, idx) => {
     let type = createRouteClass(route.type);
     return (

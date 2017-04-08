@@ -31,7 +31,7 @@ class Visual extends React.Component {
     }
     if (this.props.loading.routesLoading || this.props.loading.ticksLoading) {
       return (
-        <div> Fetching data...</div>
+        <div className="fetching"> Fetching data...</div>
       );
     } else if (this.props.loading.userSearched && this.props.ticks.length === 0) {
       return (

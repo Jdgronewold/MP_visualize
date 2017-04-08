@@ -2,6 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  height: auto;
+  background-color: #dededc;
+}
+
+.header-vis{
+  background: url(<%= asset_path 'mountain.jpg' %>);
+  background-size: auto auto;
+  height: 200px;
+  background-position: bottom;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 250px;
+}
+
+.search-component {
+  width: 500px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  padding-left: 10px;
+  margin-left: 30px;
+  margin-top: 15px;
+}
 .search-component input, button {
   margin-left: 20px;
 }
@@ -13,6 +39,10 @@
 .encouragement {
   margin: 20px;
   margin-left: 10px;
+}
+
+.fetching {
+  margin: 30px;
 }
 
 .fa {
@@ -38,10 +68,12 @@
 }
 
 .visuals-main {
+  height: 460px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 ul {
@@ -49,11 +81,17 @@ ul {
 }
 
 .routes-list {
-  height: 390px;
-  flex: 1;
+  margin: 0;
+  margin-left: 30px;
+  padding: 15px;
+  width: 150px;
+  height: 410px;
   font-weight: bold;
   overflow: scroll;
-  font-size: 20px;
+  font-size: 16px;
+  // border: 3px solid black;
+  border-radius: 20px;
+  background-color: white;
 }
 
 .routes-list li:hover {
@@ -61,25 +99,34 @@ ul {
 }
 
 .routes-grades {
-  height: 390px;
-  flex: 2;
-}
-
-.routes-types {
-  flex: 2;
+  height: 410px;
+  padding: 15px;
+  // border: 3px solid black;
+  border-radius: 20px;
+  background-color: white;
+  margin-left: 30px;
 }
 
 .route-types {
+  height: 410px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 15px;
+  // border: 3px solid black;
+  border-radius: 20px;
+  background-color: white;
+  margin-left: 30px;
 }
 
 .route-detail {
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-radius: 20px;
+  background-color: white;
+  margin: 30px;
 }
 
 .route-image {
