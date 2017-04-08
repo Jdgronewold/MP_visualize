@@ -9,6 +9,7 @@ const colors = {
   Ice: '#0099c6',
   Mixed: '#990099',
   TradAid: '#ffd700',
+  TR: '#FFB6C1',
   Other: '#00ff7f'
 };
 
@@ -29,6 +30,9 @@ class PieChart extends React.Component {
         if (types.includes("Alpine")) {
           return "Alpine";
         } else if (types.includes("TR")) {
+          if (types.length === 1) {
+            return "TR";
+          }
           const idx = types.indexOf("TR");
           types.splice(idx, 1);
           return types.join(", ");
@@ -56,6 +60,8 @@ class PieChart extends React.Component {
         return colors.Mixed;
       case "Trad, Aid":
         return colors.TradAid;
+      case "TR":
+        return colors.TR;
       default:
         return colors.Other;
     }
@@ -65,6 +71,9 @@ class PieChart extends React.Component {
     const arcs = d3.pie()
       .value(d => d.values.length)
       .padAngle(0.04)(data);
+
+    let specs = data.length >= 5 ? {inner: 25, outer: 115 } :
+      {inner: 40, outer: 130 };
 
     const arcGenerator = d3.arc()
      .innerRadius(40)
@@ -107,11 +116,12 @@ class PieChart extends React.Component {
       let div = d3.select(this.tableNode);
 
       this.pieNode = ReactFauxDOM.createElement("svg");
+      const pieData = this.parseData(this.props.data);
+
       let svg = d3.select(this.pieNode)
+        .attr("class", "pieSVG")
         .attr('width', '300')
         .attr('height', '300');
-
-      const pieData = this.parseData(this.props.data);
 
       this.renderTable(div, pieData);
       this.renderPie(svg, pieData);

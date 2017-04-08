@@ -134,7 +134,7 @@ class BarPlot extends React.Component {
 
   routeDetail() {
     if (Object.keys(this.state.routeDetail).length === 0 ) {
-      return <div></div>;
+      return <div className="route-detail"></div>;
     } else {
       return <RouteDetail data={this.state.routeDetail} />;
     }
@@ -157,7 +157,7 @@ class BarPlot extends React.Component {
       this.addRects(svg, sortedGrades, xScale, yScale);
       this.addLabels(svg, sortedGrades, xScale, yScale);
       this.addAxis(svg, yScale);
-      
+
       svg.append('text')
       .attr('x', `${this.props.padding / 2}`)
       .attr('y', '20')

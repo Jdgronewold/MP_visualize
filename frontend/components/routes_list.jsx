@@ -7,6 +7,12 @@ const createRouteClass = (type) => {
   } else if (types.includes("TR")) {
     const idx = types.indexOf("TR");
     types.splice(idx, 1);
+    console.log(types);
+    if (!types.length) {
+      return "TR";
+    }  else if (types.join(", ") === "Trad, Aid") {
+      return "TradAid";
+    }
     return types.join(", ");
   } else if(type === "Trad, Aid") {
     return "TradAid";
@@ -19,7 +25,7 @@ const createRouteClass = (type) => {
 
 export default (props) => {
   if (!props.data.length) return <div></div>;
-    
+
   const routes = props.data.map( (route, idx) => {
     let type = createRouteClass(route.type);
     return (

@@ -1,9 +1,20 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 
 class RouteDetail extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    ReactDOM.findDOMNode(this.refs.detail)
+      .scrollIntoView({behavior: 'smooth', block: 'end'});
+  }
+
+  componentDidUpdate() {
+    ReactDOM.findDOMNode(this.refs.detail)
+      .scrollIntoView({behavior: 'smooth', block: 'end'});
   }
 
   render() {
@@ -18,7 +29,7 @@ class RouteDetail extends React.Component {
     }
 
     return (
-      <div className={'route-detail'}>
+      <div className='route-detail' ref="detail">
         <img
           src={this.props.data.imgMed}
           alt={'mp_img'}
