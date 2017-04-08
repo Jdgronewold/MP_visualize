@@ -1,24 +1,21 @@
-# README
+# MP Tick Visualizer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[MP Tick Visualizer][mp-tick] is a web application for users to track their ticks on [Mountain Project][mp]. The user can enter either an email or userId (typically found at the end of the url on a member's MP page) associated with an account and use that to access their data.
 
-Things you may want to cover:
+MP Tick Visualizer is a personal project by Jeff Gronewold.
 
-* Ruby version
+## Features/Technology
 
-* System dependencies
+- Rails backend to make data requests through Mountain Projects API
+- React and Redux to manage state and UI on the frontend
+- D3.js to bind data to images and create scales necessary for plotting both the bar graph and pie chart
+- [React Faux DOM] to handle the interaction between React and D3 - to prevent React and D3 from fighting over the DOM, React Faux DOM provides an interface between the two that recognizes both D3 functions as well as enough Javascript functions to create React Components.
 
-* Configuration
+![demo ticks][ticks]
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[mp-tick]: https://mp-visualize.herokuapp.com/
+[mp]: https://www.mountainproject.com/
+[ticks]: ./app/assets/images/Sample-MP.png "Splash page"
