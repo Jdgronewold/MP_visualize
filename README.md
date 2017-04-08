@@ -6,10 +6,10 @@ MP Tick Visualizer is a personal project by Jeff Gronewold.
 
 ## Features/Technology
 
-- Rails backend to make data requests through Mountain Projects API
+- Rails backend to make data requests through Mountain Project's API
 - React and Redux to manage state and UI on the frontend
 - D3.js to bind data to images and create scales necessary for plotting both the bar graph and pie chart
-- [React Faux DOM] to handle the interaction between React and D3 - to prevent React and D3 from fighting over the DOM, React Faux DOM provides an interface between the two that recognizes both D3 functions as well as enough Javascript functions to create React Components.
+- [React Faux DOM][RFD] to handle the interaction between React and D3 - to prevent React and D3 from fighting over the DOM, React Faux DOM provides an interface between the two that recognizes both D3 functions as well as enough Javascript functions to create React Components.
 
 ![demo ticks][ticks]
 
@@ -18,4 +18,5 @@ MP Tick Visualizer is a personal project by Jeff Gronewold.
 
 [mp-tick]: https://mp-visualize.herokuapp.com/
 [mp]: https://www.mountainproject.com/
+[RFD]: https://github.com/Olical/react-faux-dom
 [ticks]: ./app/assets/images/Sample-MP.png "Splash page"
