@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactFauxDOM from 'react-faux-dom';
 import * as d3 from 'd3';
 
@@ -83,8 +84,12 @@ class BarPlot extends React.Component {
       .attr('fill', '#3a9fbf')
       .on("click", (d) => this.showData(d.values))
       .on("mouseover", function() {
-        d3.select(this)
-          .transition()             // <-- New!
+        const rect = d3.select(this);
+        console.log(this);
+        console.log(rect);
+        console.log(ReactDOM.findDOMNode(this));
+
+        rect.transition()             // <-- New!
           .duration(1000)           // <-- New!
           .attr("fill", "white");
       });
